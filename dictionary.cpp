@@ -3,6 +3,7 @@
 #include <string.h>
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 using std::string;
@@ -50,6 +51,7 @@ void DumpDictionary(DICT dict, int count[]) {
     WORD tmpWord;
     int nextWord = 0;
     int tmpFreq  = 0;
+    const int WIDTHFORMAT = 70;
 
     for ( int i = 0; i < (numberWords - 1); i++ ){ /*for loop will sort the dictionary
                                                     alphabetically*/
@@ -70,10 +72,20 @@ void DumpDictionary(DICT dict, int count[]) {
        
     }
 
-
-    cout << "Word ------------------------------------------ Frequency" << endl;
+    /*prints out the dictionary*/
+    cout << left << setfill('-');
+    cout << setw(WIDTHFORMAT);
+    cout << "Word";
+    cout << "Frequency";
+    cout << endl;
+    cout << endl;
     for( int i = 0; i < numberWords; i++){
-       cout << dict[i] <<"                    " << count[i] << endl;
+       cout << left << setfill(' ');
+       cout << setw(WIDTHFORMAT);
+       cout << dict[i];
+       //cout << right << setfill(' ');
+       //cout << setw(50);
+       cout << count[i] << endl;
 
     } 
 
@@ -93,7 +105,7 @@ WORD GetNextWord(void){
       letter = cin.get();
       if( isalpha(letter) ){
 
-         tmp.push_back( tolower(letter) );
+         tmp.push_back( letter );
          inputSuccess = true;
     
       }
