@@ -1,3 +1,12 @@
+/*
+
+Author: Tyler Arseneault
+Date: October 24, 2014
+Assignment 2
+Purpose: This program will take a text file, extract the words, storing them into a dictionary. It will track the number of occurences of each word, and display them to the user in alphbetical order.
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -105,7 +114,8 @@ WORD GetNextWord(void){
       letter = cin.get();
       if( isalpha(letter) ){
 
-         tmp.push_back( letter );
+         letter = tolower(letter); //transforms letter to lowercase
+         tmp.push_back( letter );  //pushes letter into word
          inputSuccess = true;
     
       }
